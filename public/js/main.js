@@ -75,25 +75,69 @@
   dateInput.min = iso;
   dateInput.value = iso;
 
-  // Booking form validation + success modal
+  // Booking form validation + AJAX submission to Laravel backend
   const form = document.getElementById('bookingForm');
-  const modal = new bootstrap.Modal(document.getElementById('successModal'));
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    if (!form.checkValidity()) {
-      form.classList.add('was-validated');
-      form.querySelector(':invalid')?.focus();
-      return;
-    }
-    const name = document.getElementById('fullName').value.trim();
-    const phone = document.getElementById('phone').value.trim();
-    document.getElementById('successText').textContent =
-      `Thank you, ${name}! Our team will call ${phone} within 5 minutes to confirm your ${serviceSelect.value} appointment.`;
-    modal.show();
-    form.reset();
-    form.classList.remove('was-validated');
-    dateInput.value = iso;
-  });
+  const modalEl = document.getElementById('successModal');
+  const modal = modalEl ? new bootstrap.Modal(modalEl) : null;
+  if (form) {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      if (!form.checkValidity()) {
+        form.classList.add('was-validated');
+        form.querySelector(':invalid')?.focus();
+        return;
+      }
+      const submitBtn = document.getElementById('submitBooking');
+      const originalText = submitBtn ? submitBtn.innerHTML : '';
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span> Submitting...';
+      }
+
+      const formData = new FormData(form);
+      const actionUrl = form.getAttribute('action') || '/book';
+
+      try {
+        const csrfToken = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content');
+        const res = await fetch(actionUrl, {
+          method: 'POST',
+          body: formData,
+          headers: {
+            'X-Requested-With': 'XMLHttpRequest',
+            'Accept': 'application/json',
+            ...(csrfToken ? { 'X-CSRF-TOKEN': csrfToken } : {})
+          }
+        });
+
+        const data = await res.json();
+
+        if (res.ok && data.success) {
+          const titleEl = document.getElementById('successTitle');
+          const textEl = document.getElementById('successText');
+          if (titleEl) titleEl.textContent = 'Booking Received!';
+          if (textEl) textEl.textContent = data.message;
+          if (modal) modal.show();
+          form.reset();
+          form.classList.remove('was-validated');
+          if (dateInput) dateInput.value = iso;
+        } else {
+          let errorMsg = data.message || 'Validation error occurred.';
+          if (data.errors) {
+            errorMsg = Object.values(data.errors).flat().join('\n');
+          }
+          alert(errorMsg);
+        }
+      } catch (err) {
+        console.error(err);
+        alert('An error occurred while submitting your booking. Please call our hotline directly.');
+      } finally {
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = originalText;
+        }
+      }
+    });
+  }
 
   // Image preview modal handler
   const imageModal = document.getElementById('imagePreviewModal');
