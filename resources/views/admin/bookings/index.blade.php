@@ -45,7 +45,7 @@
           <th>Date & Time</th>
           <th>Female Tech?</th>
           <th>Status</th>
-          <th class="actions-col">Actions</th>
+          <th class="actions-col" style="width: 130px; min-width: 130px; text-align: right;">Actions</th>
         </tr>
       </thead>
       <tbody>
@@ -85,15 +85,15 @@
                 <span class="badge bg-danger"><i class="bi bi-x-circle me-1"></i>Cancelled</span>
               @endif
             </td>
-            <td class="actions-col">
-              <div class="table-actions">
-                <a href="{{ route('admin.bookings.show', $booking) }}" class="btn btn-outline-primary" title="View details & change status">
+            <td class="actions-col" style="white-space: nowrap; width: 130px; min-width: 130px; text-align: right;">
+              <div class="table-actions" style="display: inline-flex; flex-direction: row; flex-wrap: nowrap; align-items: center; justify-content: flex-end; gap: 8px;">
+                <a href="{{ route('admin.bookings.show', $booking) }}" class="btn btn-outline-primary" title="View details & change status" style="width: 36px; height: 36px; display: inline-flex; align-items: center; justify-content: center;">
                   <i class="bi bi-pencil-square"></i>
                 </a>
-                <form method="POST" action="{{ route('admin.bookings.destroy', $booking) }}" onsubmit="return confirm('Delete this booking request?');">
+                <form method="POST" action="{{ route('admin.bookings.destroy', $booking) }}" onsubmit="return confirm('Delete this booking request?');" style="display: inline-flex; margin: 0; padding: 0;">
                   @csrf
                   @method('DELETE')
-                  <button type="submit" class="btn btn-outline-danger" title="Delete">
+                  <button type="submit" class="btn btn-outline-danger" title="Delete" style="width: 36px; height: 36px; display: inline-flex; align-items: center; justify-content: center;">
                     <i class="bi bi-trash"></i>
                   </button>
                 </form>

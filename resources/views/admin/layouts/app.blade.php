@@ -192,39 +192,57 @@
       border-bottom: 1px solid #f1f5f9;
     }
 
-    /* Locked Action Buttons */
-    .actions-col {
-      width: 120px !important;
-      min-width: 120px !important;
-      text-align: right !important;
+    /* Bulletproof Locked Action Buttons */
+    th.actions-col,
+    td.actions-col {
+      width: 130px !important;
+      min-width: 130px !important;
+      max-width: 150px !important;
       white-space: nowrap !important;
+      text-align: right !important;
+      vertical-align: middle !important;
     }
 
     .table-actions {
       display: inline-flex !important;
+      flex-direction: row !important;
+      flex-wrap: nowrap !important;
       align-items: center !important;
       justify-content: flex-end !important;
       gap: 8px !important;
       white-space: nowrap !important;
       margin: 0 !important;
       padding: 0 !important;
+      line-height: 1 !important;
     }
 
     .table-actions form {
       display: inline-flex !important;
       margin: 0 !important;
       padding: 0 !important;
+      line-height: 1 !important;
+      vertical-align: middle !important;
     }
 
     .table-actions .btn {
-      width: 34px !important;
-      height: 34px !important;
+      width: 36px !important;
+      height: 36px !important;
+      min-width: 36px !important;
+      min-height: 36px !important;
       padding: 0 !important;
       display: inline-flex !important;
       align-items: center !important;
       justify-content: center !important;
       border-radius: 8px !important;
       flex-shrink: 0 !important;
+      font-size: 0.92rem !important;
+      line-height: 1 !important;
+    }
+
+    .table-actions .btn i {
+      font-size: 1rem !important;
+      line-height: 1 !important;
+      margin: 0 !important;
     }
 
     @media (max-width: 991.98px) {

@@ -73,7 +73,7 @@
               <th>Area</th>
               <th>Preferred Date</th>
               <th>Status</th>
-              <th class="actions-col">Action</th>
+              <th class="actions-col" style="width: 100px; min-width: 100px; text-align: right;">Action</th>
             </tr>
           </thead>
           <tbody>
@@ -102,9 +102,9 @@
                     <span class="badge bg-danger"><i class="bi bi-x-circle me-1"></i>Cancelled</span>
                   @endif
                 </td>
-                <td class="actions-col">
-                  <div class="table-actions">
-                    <a href="{{ route('admin.bookings.show', $b) }}" class="btn btn-outline-primary" title="Details">
+                <td class="actions-col" style="white-space: nowrap; width: 100px; min-width: 100px; text-align: right;">
+                  <div class="table-actions" style="display: inline-flex; align-items: center; justify-content: flex-end;">
+                    <a href="{{ route('admin.bookings.show', $b) }}" class="btn btn-outline-primary" title="Details" style="width: 36px; height: 36px; display: inline-flex; align-items: center; justify-content: center;">
                       <i class="bi bi-eye"></i>
                     </a>
                   </div>

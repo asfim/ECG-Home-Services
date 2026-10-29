@@ -23,7 +23,7 @@ class SettingController extends Controller
 
         // Handle Logo upload
         if ($request->hasFile('logo')) {
-            $request->validate(['logo' => 'image|mimes:jpeg,png,jpg,webp,svg|max:2048']);
+            $request->validate(['logo' => 'nullable|image|mimes:jpeg,png,jpg,webp,svg,gif|max:5120']);
             $oldLogo = SiteSetting::get('logo');
             $logoPath = $this->uploadImage($request->file('logo'), $oldLogo);
             SiteSetting::set('logo', $logoPath, 'general');
@@ -31,7 +31,7 @@ class SettingController extends Controller
 
         // Handle Favicon upload
         if ($request->hasFile('favicon')) {
-            $request->validate(['favicon' => 'image|mimes:jpeg,png,jpg,ico,png|max:1024']);
+            $request->validate(['favicon' => 'nullable|file|mimes:jpeg,png,jpg,ico,svg,webp,png|max:2048']);
             $oldFavicon = SiteSetting::get('favicon');
             $favPath = $this->uploadImage($request->file('favicon'), $oldFavicon);
             SiteSetting::set('favicon', $favPath, 'general');

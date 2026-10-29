@@ -162,7 +162,7 @@
       </div>
       <div class="footer-bottom">
         <span>© <span id="year">{{ date('Y') }}</span> {{ $settings['copyright'] ?? 'CardioHome. All rights reserved.' }}</span>
-        <span>Made with <i class="bi bi-heart-fill"></i> in Dhaka</span>
+        <span>{!! $settings['footer_credit'] ?? 'Made with <i class="bi bi-heart-fill"></i> in Dhaka' !!}</span>
       </div>
     </div>
   </footer>

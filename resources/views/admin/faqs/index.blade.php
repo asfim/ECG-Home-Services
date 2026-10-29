@@ -20,7 +20,7 @@
           <th>Question</th>
           <th>Answer Summary</th>
           <th>Status</th>
-          <th class="actions-col">Actions</th>
+          <th class="actions-col" style="width: 130px; min-width: 130px; text-align: right;">Actions</th>
         </tr>
       </thead>
       <tbody>
@@ -42,15 +42,15 @@
                 <span class="badge bg-secondary">Inactive</span>
               @endif
             </td>
-            <td class="actions-col">
-              <div class="table-actions">
-                <a href="{{ route('admin.faqs.edit', $faq) }}" class="btn btn-outline-primary" title="Edit">
+            <td class="actions-col" style="white-space: nowrap; width: 130px; min-width: 130px; text-align: right;">
+              <div class="table-actions" style="display: inline-flex; flex-direction: row; flex-wrap: nowrap; align-items: center; justify-content: flex-end; gap: 8px;">
+                <a href="{{ route('admin.faqs.edit', $faq) }}" class="btn btn-outline-primary" title="Edit" style="width: 36px; height: 36px; display: inline-flex; align-items: center; justify-content: center;">
                   <i class="bi bi-pencil"></i>
                 </a>
-                <form method="POST" action="{{ route('admin.faqs.destroy', $faq) }}" onsubmit="return confirm('Delete this FAQ?');">
+                <form method="POST" action="{{ route('admin.faqs.destroy', $faq) }}" onsubmit="return confirm('Delete this FAQ?');" style="display: inline-flex; margin: 0; padding: 0;">
                   @csrf
                   @method('DELETE')
-                  <button type="submit" class="btn btn-outline-danger" title="Delete">
+                  <button type="submit" class="btn btn-outline-danger" title="Delete" style="width: 36px; height: 36px; display: inline-flex; align-items: center; justify-content: center;">
                     <i class="bi bi-trash"></i>
                   </button>
                 </form>

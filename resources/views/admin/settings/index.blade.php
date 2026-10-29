@@ -20,6 +20,11 @@
           </button>
         </li>
         <li class="nav-item" role="presentation">
+          <button class="nav-link fw-semibold" id="footer-tab" data-bs-toggle="tab" data-bs-target="#footerPane" type="button" role="tab">
+            <i class="bi bi-layout-text-window-reverse me-1 text-success"></i> Footer & Socials (ফুটার সেটিংস)
+          </button>
+        </li>
+        <li class="nav-item" role="presentation">
           <button class="nav-link fw-semibold" id="seo-tab" data-bs-toggle="tab" data-bs-target="#seoPane" type="button" role="tab">
             <i class="bi bi-search me-1"></i> SEO & Meta Data
           </button>
@@ -40,8 +45,14 @@
         <!-- 1. Branding & Contact -->
         <div class="tab-pane fade show active" id="brandPane" role="tabpanel">
           <div class="row g-3">
+            <div class="col-12">
+              <label class="form-label fw-semibold text-primary"><i class="bi bi-window me-1"></i> Website Title (ব্রাউজার ট্যাব ও এসইও টাইটেল) <span class="text-danger">*</span></label>
+              <input type="text" name="site_title" class="form-control form-control-lg" value="{{ $settings['site_title'] ?? 'ECG Home Service in Mohammadpur, Dhaka | 24/7 Home ECG Test' }}" required>
+              <small class="text-muted">এই টাইটেলটি ব্রাউজারের ট্যাবে এবং গুগল সার্চ রেজাল্টে সবার উপরে দেখাবে।</small>
+            </div>
+
             <div class="col-md-6">
-              <label class="form-label fw-semibold">Site Name</label>
+              <label class="form-label fw-semibold">Site Name (ব্র্যান্ড নাম)</label>
               <input type="text" name="site_name" class="form-control" value="{{ $settings['site_name'] ?? 'CardioHome' }}">
             </div>
             <div class="col-md-6">
@@ -50,12 +61,29 @@
             </div>
 
             <div class="col-md-6">
-              <label class="form-label fw-semibold">Dialable Tel Phone (E.164)</label>
-              <input type="text" name="tel_phone" class="form-control" value="{{ $settings['tel_phone'] ?? '+8801348223547' }}">
+              <div class="p-3 bg-light rounded-3 border">
+                <label class="form-label fw-semibold text-dark"><i class="bi bi-image me-1 text-primary"></i> Upload Website Logo (মূল লোগো)</label>
+                <input type="file" name="logo" class="form-control" accept="image/*">
+                <div class="mt-2 d-flex align-items-center gap-3">
+                  <span class="small text-muted">বর্তমান লোগো:</span>
+                  <div class="p-2 bg-white rounded border shadow-sm">
+                    <img src="{{ asset($settings['logo'] ?? 'images/logo.png') }}" alt="Logo" style="height: 48px; max-width: 180px; object-fit: contain;">
+                  </div>
+                </div>
+              </div>
             </div>
+
             <div class="col-md-6">
-              <label class="form-label fw-semibold">WhatsApp Number (e.g. 8801348223547)</label>
-              <input type="text" name="whatsapp_number" class="form-control" value="{{ $settings['whatsapp_number'] ?? '8801348223547' }}">
+              <div class="p-3 bg-light rounded-3 border">
+                <label class="form-label fw-semibold text-dark"><i class="bi bi-app-indicator me-1 text-info"></i> Upload Favicon (ব্রাউজার আইকন)</label>
+                <input type="file" name="favicon" class="form-control" accept="image/*">
+                <div class="mt-2 d-flex align-items-center gap-3">
+                  <span class="small text-muted">বর্তমান ফেভিকন:</span>
+                  <div class="p-2 bg-white rounded border shadow-sm">
+                    <img src="{{ asset($settings['favicon'] ?? 'images/logo.png') }}" alt="Favicon" style="height: 32px; width: 32px; object-fit: contain;">
+                  </div>
+                </div>
+              </div>
             </div>
 
             <div class="col-md-6">
@@ -71,38 +99,44 @@
               <label class="form-label fw-semibold">Physical Base Address</label>
               <input type="text" name="address" class="form-control" value="{{ $settings['address'] ?? 'Tajmahal Road, Mohammadpur, Dhaka-1207' }}">
             </div>
+          </div>
+        </div>
 
-            <div class="col-md-6">
-              <label class="form-label fw-semibold">Upload Website Logo</label>
-              <input type="file" name="logo" class="form-control" accept="image/*">
-              <div class="mt-2 p-2 bg-light rounded border d-inline-block">
-                <img src="{{ asset($settings['logo'] ?? 'images/logo.png') }}" alt="Logo" style="height: 48px;">
-              </div>
-            </div>
-            <div class="col-md-6">
-              <label class="form-label fw-semibold">Upload Favicon</label>
-              <input type="file" name="favicon" class="form-control" accept="image/*">
-              <div class="mt-2 p-2 bg-light rounded border d-inline-block">
-                <img src="{{ asset($settings['favicon'] ?? 'images/logo.png') }}" alt="Favicon" style="height: 32px;">
-              </div>
-            </div>
-
-            <div class="col-md-6">
-              <label class="form-label fw-semibold">Facebook Page URL</label>
-              <input type="text" name="facebook_url" class="form-control" value="{{ $settings['facebook_url'] ?? '#' }}">
-            </div>
-            <div class="col-md-6">
-              <label class="form-label fw-semibold">YouTube URL</label>
-              <input type="text" name="youtube_url" class="form-control" value="{{ $settings['youtube_url'] ?? '#' }}">
-            </div>
-
+        <!-- 2. Footer Settings -->
+        <div class="tab-pane fade" id="footerPane" role="tabpanel">
+          <div class="row g-3">
             <div class="col-12">
-              <label class="form-label fw-semibold">Footer About Text</label>
-              <textarea name="footer_desc" class="form-control" rows="2">{{ $settings['footer_desc'] ?? '' }}</textarea>
+              <label class="form-label fw-semibold text-primary"><i class="bi bi-file-earmark-text me-1"></i> Footer About / Description (ফুটারের সংক্ষিপ্ত পরিচিতি)</label>
+              <textarea name="footer_desc" class="form-control" rows="3" placeholder="24/7 ECG home service in Mohammadpur, Dhaka...">{{ $settings['footer_desc'] ?? '' }}</textarea>
+              <small class="text-muted">ফুটারের বাম কলামে লোগোর ঠিক নিচে এই লেখাটি প্রদর্শিত হবে।</small>
             </div>
-            <div class="col-12">
-              <label class="form-label fw-semibold">Footer Copyright Text</label>
+
+            <div class="col-md-6">
+              <label class="form-label fw-semibold">Footer Copyright Text (কপিরাইট নাম)</label>
               <input type="text" name="copyright" class="form-control" value="{{ $settings['copyright'] ?? 'CardioHome. All rights reserved.' }}">
+              <small class="text-muted">© {{ date('Y') }} এর সাথে প্রদর্শিত হবে।</small>
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label fw-semibold">Footer Credit Note (ডানপাশের নোট)</label>
+              <input type="text" name="footer_credit" class="form-control" value="{{ $settings['footer_credit'] ?? 'Made with ❤️ in Dhaka' }}">
+              <small class="text-muted">ফুটারের নিচে ডানে প্রদর্শিত হবে।</small>
+            </div>
+
+            <div class="col-12"><hr class="my-2"></div>
+            <h6 class="fw-bold text-dark"><i class="bi bi-share-fill me-1 text-primary"></i>Footer Social Media Links (সোশ্যাল মিডিয়া লিঙ্ক)</h6>
+
+            <div class="col-md-4">
+              <label class="form-label fw-semibold"><i class="bi bi-facebook text-primary me-1"></i> Facebook Page URL</label>
+              <input type="text" name="facebook_url" class="form-control" value="{{ $settings['facebook_url'] ?? '#' }}" placeholder="https://facebook.com/...">
+            </div>
+            <div class="col-md-4">
+              <label class="form-label fw-semibold"><i class="bi bi-youtube text-danger me-1"></i> YouTube Channel URL</label>
+              <input type="text" name="youtube_url" class="form-control" value="{{ $settings['youtube_url'] ?? '#' }}" placeholder="https://youtube.com/...">
+            </div>
+            <div class="col-md-4">
+              <label class="form-label fw-semibold"><i class="bi bi-whatsapp text-success me-1"></i> WhatsApp Number</label>
+              <input type="text" name="whatsapp_number" class="form-control" value="{{ $settings['whatsapp_number'] ?? '8801348223547' }}" placeholder="8801348223547">
             </div>
           </div>
         </div>
@@ -111,11 +145,7 @@
         <div class="tab-pane fade" id="seoPane" role="tabpanel">
           <div class="row g-3">
             <div class="col-12">
-              <label class="form-label fw-semibold">Page Title (Title Tag)</label>
-              <input type="text" name="site_title" class="form-control" value="{{ $settings['site_title'] ?? '' }}" required>
-            </div>
-            <div class="col-12">
-              <label class="form-label fw-semibold">Meta Description</label>
+              <label class="form-label fw-semibold">Meta Description (গুগল সার্চ স্নsnippet ডেসক্রিপশন)</label>
               <textarea name="meta_description" class="form-control" rows="3">{{ $settings['meta_description'] ?? '' }}</textarea>
             </div>
             <div class="col-12">
