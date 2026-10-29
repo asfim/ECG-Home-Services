@@ -22,7 +22,7 @@
           <th>Review Comment</th>
           <th>Verified</th>
           <th>Status</th>
-          <th class="text-end">Actions</th>
+          <th class="text-end" style="width: 120px; white-space: nowrap;">Actions</th>
         </tr>
       </thead>
       <tbody>
@@ -60,17 +60,19 @@
                 <span class="badge bg-secondary">Inactive</span>
               @endif
             </td>
-            <td class="text-end">
-              <a href="{{ route('admin.testimonials.edit', $testi) }}" class="btn btn-sm btn-outline-primary me-1" title="Edit">
-                <i class="bi bi-pencil"></i>
-              </a>
-              <form method="POST" action="{{ route('admin.testimonials.destroy', $testi) }}" class="d-inline" onsubmit="return confirm('Delete this testimonial?');">
-                @csrf
-                @method('DELETE')
-                <button type="submit" class="btn btn-sm btn-outline-danger" title="Delete">
-                  <i class="bi bi-trash"></i>
-                </button>
-              </form>
+            <td class="text-end text-nowrap">
+              <div class="d-inline-flex align-items-center justify-content-end gap-2">
+                <a href="{{ route('admin.testimonials.edit', $testi) }}" class="btn btn-sm btn-outline-primary" title="Edit">
+                  <i class="bi bi-pencil"></i>
+                </a>
+                <form method="POST" action="{{ route('admin.testimonials.destroy', $testi) }}" class="d-inline mb-0" onsubmit="return confirm('Delete this testimonial?');">
+                  @csrf
+                  @method('DELETE')
+                  <button type="submit" class="btn btn-sm btn-outline-danger" title="Delete">
+                    <i class="bi bi-trash"></i>
+                  </button>
+                </form>
+              </div>
             </td>
           </tr>
         @empty
