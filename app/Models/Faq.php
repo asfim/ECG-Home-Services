@@ -18,3 +18,4 @@ class Faq extends Model
         'order' => 'integer',
     ];
 }
+

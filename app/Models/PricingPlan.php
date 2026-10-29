@@ -28,3 +28,4 @@ class PricingPlan extends Model
         'price' => 'integer',
     ];
 }
+

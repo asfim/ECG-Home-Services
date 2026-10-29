@@ -33,3 +33,4 @@ trait HandlesImageUpload
         return $folder . '/' . $filename;
     }
 }
+

@@ -74,3 +74,4 @@ class FrontendController extends Controller
         ]);
     }
 }
+

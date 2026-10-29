@@ -25,3 +25,4 @@ class Testimonial extends Model
         'order' => 'integer',
     ];
 }
+

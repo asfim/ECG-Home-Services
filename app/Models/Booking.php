@@ -24,3 +24,4 @@ class Booking extends Model
         'preferred_date' => 'date',
     ];
 }
+

@@ -158,3 +158,4 @@ class GalleryController extends Controller
         return redirect()->route('admin.galleries.index')->with('success', 'Gallery item deleted successfully.');
     }
 }
+

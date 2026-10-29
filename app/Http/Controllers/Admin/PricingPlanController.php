@@ -104,3 +104,4 @@ class PricingPlanController extends Controller
         return redirect()->route('admin.pricing.index')->with('success', 'Pricing plan deleted successfully.');
     }
 }
+

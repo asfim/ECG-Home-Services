@@ -62,3 +62,4 @@ class FaqController extends Controller
         return redirect()->route('admin.faqs.index')->with('success', 'FAQ deleted successfully.');
     }
 }
+

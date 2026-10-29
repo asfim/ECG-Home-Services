@@ -20,3 +20,4 @@ class CoverageArea extends Model
         'order' => 'integer',
     ];
 }
+

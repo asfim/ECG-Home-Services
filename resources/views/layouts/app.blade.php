@@ -51,7 +51,7 @@
   <!-- Structured data: Local medical business -->
   <script type="application/ld+json">
   {
-    "@context": "https://schema.org",
+    "@@context": "https://schema.org",
     "@type": "MedicalBusiness",
     "@id": "{{ $settings['canonical_url'] ?? url('/') }}#business",
     "name": "{{ $settings['site_name'] ?? 'CardioHome' }} – ECG Home Service",

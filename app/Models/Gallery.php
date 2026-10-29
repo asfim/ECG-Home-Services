@@ -47,3 +47,4 @@ class Gallery extends Model
         return asset($this->image);
     }
 }
+

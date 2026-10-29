@@ -38,3 +38,4 @@ class Service extends Model
         return asset($this->image);
     }
 }
+

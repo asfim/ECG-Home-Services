@@ -108,3 +108,4 @@ class SliderController extends Controller
         return redirect()->route('admin.sliders.index')->with('success', 'Slider deleted successfully.');
     }
 }
+

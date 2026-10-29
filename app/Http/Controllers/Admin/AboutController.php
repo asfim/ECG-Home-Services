@@ -85,3 +85,4 @@ class AboutController extends Controller
         return redirect()->route('admin.about.edit')->with('success', 'About section updated successfully.');
     }
 }
+

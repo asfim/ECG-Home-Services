@@ -68,3 +68,4 @@ class CoverageAreaController extends Controller
         return redirect()->route('admin.areas.index')->with('success', 'Coverage area deleted successfully.');
     }
 }
+

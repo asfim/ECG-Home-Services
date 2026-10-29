@@ -41,3 +41,4 @@ class ProfileController extends Controller
         return redirect()->route('admin.profile.edit')->with('success', 'Profile updated successfully.');
     }
 }
+
