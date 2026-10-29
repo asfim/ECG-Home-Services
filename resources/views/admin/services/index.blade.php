@@ -22,7 +22,7 @@
           <th>Tag / Badge</th>
           <th>Icon</th>
           <th>Status</th>
-          <th class="text-end" style="width: 120px; white-space: nowrap;">Actions</th>
+          <th class="actions-col">Actions</th>
         </tr>
       </thead>
       <tbody>
@@ -60,15 +60,15 @@
                 <span class="badge bg-secondary">Inactive</span>
               @endif
             </td>
-            <td class="text-end text-nowrap">
-              <div class="d-inline-flex align-items-center justify-content-end gap-2">
-                <a href="{{ route('admin.services.edit', $service) }}" class="btn btn-sm btn-outline-primary" title="Edit">
+            <td class="actions-col">
+              <div class="table-actions">
+                <a href="{{ route('admin.services.edit', $service) }}" class="btn btn-outline-primary" title="Edit">
                   <i class="bi bi-pencil"></i>
                 </a>
-                <form method="POST" action="{{ route('admin.services.destroy', $service) }}" class="d-inline mb-0" onsubmit="return confirm('Delete this service?');">
+                <form method="POST" action="{{ route('admin.services.destroy', $service) }}" onsubmit="return confirm('Delete this service?');">
                   @csrf
                   @method('DELETE')
-                  <button type="submit" class="btn btn-sm btn-outline-danger" title="Delete">
+                  <button type="submit" class="btn btn-outline-danger" title="Delete">
                     <i class="bi bi-trash"></i>
                   </button>
                 </form>

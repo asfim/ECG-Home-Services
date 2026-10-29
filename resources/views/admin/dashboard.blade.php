@@ -73,7 +73,7 @@
               <th>Area</th>
               <th>Preferred Date</th>
               <th>Status</th>
-              <th class="text-end">Action</th>
+              <th class="actions-col">Action</th>
             </tr>
           </thead>
           <tbody>
@@ -102,10 +102,12 @@
                     <span class="badge bg-danger"><i class="bi bi-x-circle me-1"></i>Cancelled</span>
                   @endif
                 </td>
-                <td class="text-end">
-                  <a href="{{ route('admin.bookings.show', $b) }}" class="btn btn-sm btn-light border" title="Details">
-                    <i class="bi bi-eye"></i>
-                  </a>
+                <td class="actions-col">
+                  <div class="table-actions">
+                    <a href="{{ route('admin.bookings.show', $b) }}" class="btn btn-outline-primary" title="Details">
+                      <i class="bi bi-eye"></i>
+                    </a>
+                  </div>
                 </td>
               </tr>
             @empty
