@@ -77,7 +77,7 @@
 <body data-bs-spy="scroll" data-bs-target="#mainNav" data-bs-offset="90">
 
   <!-- ============ NAVBAR ============ -->
-  <nav class="navbar navbar-expand-lg sticky-top" id="mainNav">
+  <nav class="navbar navbar-expand-lg sticky-top" id="mainNav" style="position: -webkit-sticky; position: sticky; top: 0; z-index: 1040;">
     <div class="container">
       <a class="navbar-brand d-flex align-items-center" href="#home" id="brandLogo" aria-label="{{ $settings['site_name'] ?? 'CardioHome' }} Home">
         <img src="{{ asset($settings['logo'] ?? 'images/logo.png') }}" alt="{{ $settings['site_name'] ?? 'CardioHome' }} Logo" class="brand-img" height="64">

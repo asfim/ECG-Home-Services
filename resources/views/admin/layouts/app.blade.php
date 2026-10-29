@@ -30,7 +30,7 @@
       font-family: 'Inter', sans-serif;
       background-color: #f8fafc;
       color: #1e293b;
-      overflow-x: hidden;
+      overflow-x: clip;
     }
 
     /* Sidebar */
@@ -346,8 +346,8 @@
     <ul class="sidebar-menu mb-4">
       <li>
         <a href="{{ route('admin.settings.index') }}" class="nav-link {{ request()->routeIs('admin.settings.*') ? 'active' : '' }}">
-          <i class="bi bi-sliders"></i>
-          <span>Site Settings & SEO</span>
+          <i class="bi bi-gear-fill"></i>
+          <span>Site Settings (সেটিংস)</span>
         </a>
       </li>
       <li>
@@ -385,7 +385,10 @@
         <h4 class="mb-0 fw-bold fs-5 text-dark">@yield('page-title', 'Dashboard')</h4>
       </div>
 
-      <div class="d-flex align-items-center gap-3">
+      <div class="d-flex align-items-center gap-2">
+        <a href="{{ route('admin.settings.index') }}" class="btn btn-outline-secondary btn-sm d-inline-flex align-items-center gap-1">
+          <i class="bi bi-gear-fill text-primary"></i> Settings
+        </a>
         <a href="{{ route('home') }}" target="_blank" class="btn btn-outline-primary btn-sm d-none d-sm-inline-flex align-items-center gap-1">
           <i class="bi bi-eye"></i> View Site
         </a>
